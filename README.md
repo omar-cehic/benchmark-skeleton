@@ -2,6 +2,20 @@
 
 A first draft of the API and task base class for the lab's robotics benchmark, built on Drake with CENIC. Written for group discussion, not final.
 
+## Quick summary
+
+The benchmark is split into three pieces: the Robot, the Task, and the Policy being tested. The main decisions:
+
+1. The policy only sees what real sensors would see.
+2. The policy lives outside the simulation.
+3. Plain Python now, gRPC before outside users submit policies.
+4. Always record how long the policy takes to answer.
+5. The command format copies the real robot's.
+6. A checker decides pass or fail after every step.
+7. Seeds make every run repeatable.
+
+Each one is explained below with its pros and cons.
+
 ## The big idea
 
 Every decision below is about encapsulation: where we draw the walls between pieces, and what is allowed to cross them.
