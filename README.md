@@ -88,3 +88,13 @@ Each run's random starting position comes from a seed number. Same seed, same st
 ## What's in this repo
 
 - `skeleton.py`: a rough draft of the three pieces above (`Robot`, `Task`, `Policy`) as Python classes, plus the loop that runs one test. It's meant to show the shape of the design, not a finished implementation.
+
+## Where each decision is in skeleton.py
+
+1. Real sensors only: Robot.wire(), which picks the only things the policy can see
+2. Policy outside the simulation: the Policy class and the loop in run_episode()
+3. Python now, gRPC later: Policy.reset() and Policy.step(), the only two calls
+4. Thinking time: the timer around policy.step() in run_episode()
+5. Real robot's command format: the Robot class notes and action_spec()
+6. Pass/fail checker: Task.evaluate() and Outcome
+7. Seeds: Task.reset(), which gets its randomness from the seed
